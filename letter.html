@@ -7,20 +7,43 @@
     <link rel="stylesheet" href="letter.css" />
   </head>
   <body>
-    <div class="letter-container">
-      <div class="letter">
-        <h1>Happy Valentine's Day!</h1>
-        <p>Dear [Your Special Someone],</p>
-        <p>
-          This is your special Valentine's message. Add your heartfelt words
-          here...
-        </p>
-        <p>With love,</p>
-        <p>[Your Name]</p>
+    <div class="envelope-container">
+      <div class="envelope">
+        <!-- Address Section -->
+        <div class="address-section">
+          <div class="to-line">TO: Trexy</div>
+          <div class="address-lines">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+
+        <!-- Polaroid Photos -->
+        <div class="photos-section">
+          <div class="polaroid">
+            <img src="trexy/picture1.jpg" alt="Trexy" class="photo-image" />
+          </div>
+          <div class="polaroid">
+            <img src="trexy/picture2.jpg" alt="Trexy" class="photo-image" />
+          </div>
+        </div>
+
+        <!-- Postmark Section -->
+        <div class="postmark-section">
+          <!-- Stamp circle with heart -->
+          <div class="stamp-circle">
+            <div class="stamp-inner">
+              <svg class="stamp-heart" viewBox="0 0 32 29.6">
+                <path
+                  fill="#d32f2f"
+                  d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2 c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
-      <button class="back-button" onclick="window.location.href = 'index.html'">
-        Back to Envelope
-      </button>
     </div>
   </body>
 </html>

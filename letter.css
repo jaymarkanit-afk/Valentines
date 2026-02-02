@@ -6,89 +6,386 @@
 
 body {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #ffeef8 0%, #ffe4e9 100%);
-  font-family: "Georgia", serif;
-  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 182, 193, 0.3) 0%,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(255, 105, 180, 0.25) 0%,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 192, 203, 0.2) 0%,
+      transparent 30%
+    ),
+    linear-gradient(180deg, #ffc0cb 0%, #ffb6c1 30%, #ff69b4 70%, #ff1493 100%);
+  font-family: "Comic Sans MS", "Arial Rounded MT Bold", cursive, sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
 }
 
-.letter-container {
+body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(2px 2px at 20% 40%, rgba(255, 20, 147, 0.5), transparent),
+    radial-gradient(2px 2px at 60% 70%, rgba(255, 105, 180, 0.5), transparent),
+    radial-gradient(3px 3px at 50% 20%, rgba(255, 20, 147, 0.4), transparent),
+    radial-gradient(2px 2px at 80% 10%, rgba(255, 105, 180, 0.5), transparent),
+    radial-gradient(2px 2px at 30% 80%, rgba(255, 20, 147, 0.4), transparent),
+    radial-gradient(1px 1px at 15% 60%, rgba(255, 182, 193, 0.6), transparent),
+    radial-gradient(2px 2px at 70% 40%, rgba(255, 105, 180, 0.5), transparent);
+  background-size:
+    300px 300px,
+    250px 250px,
+    350px 350px,
+    280px 280px,
+    320px 320px,
+    200px 200px,
+    270px 270px;
+  background-position:
+    0 0,
+    130px 130px,
+    70px 70px,
+    200px 50px,
+    50px 200px,
+    150px 100px,
+    90px 180px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.envelope-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  justify-content: center;
+  gap: 3rem;
   animation: fadeIn 0.8s ease-in;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
 }
 
-.letter {
-  background: #fff;
-  padding: 3rem;
-  max-width: 600px;
-  width: 90%;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  line-height: 1.8;
+.envelope {
+  background: linear-gradient(135deg, #f5f9fb 0%, #ffffff 50%, #f5f9fb 100%);
+  padding: 2.5rem 3rem;
+  max-width: 450px;
+  width: 85%;
+  min-height: 280px;
+  position: relative;
+  margin: auto;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.05),
+    0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: slideDown 0.8s ease-out;
+  transform: perspective(1000px) rotateX(-8deg);
+  clip-path: polygon(
+    0% 2%,
+    1% 0%,
+    3% 1%,
+    5% 0.5%,
+    7% 1.5%,
+    10% 0.8%,
+    13% 1.8%,
+    16% 1%,
+    20% 2%,
+    24% 1.2%,
+    28% 2.5%,
+    32% 1.5%,
+    36% 2.8%,
+    40% 2%,
+    44% 3%,
+    48% 2.2%,
+    52% 3.2%,
+    56% 2.5%,
+    60% 3.5%,
+    64% 2.8%,
+    68% 3.8%,
+    72% 3%,
+    76% 4%,
+    80% 3.2%,
+    84% 4.2%,
+    88% 3.5%,
+    92% 4.5%,
+    96% 4%,
+    99% 3%,
+    100% 2%,
+    100% 98%,
+    99% 97%,
+    97% 98.5%,
+    95% 97.5%,
+    92% 98.8%,
+    88% 97.8%,
+    84% 98.5%,
+    80% 97.2%,
+    76% 98.2%,
+    72% 97%,
+    68% 98%,
+    64% 96.8%,
+    60% 97.5%,
+    56% 96.5%,
+    52% 97.2%,
+    48% 96.2%,
+    44% 97%,
+    40% 96%,
+    36% 96.8%,
+    32% 95.8%,
+    28% 96.5%,
+    24% 95.5%,
+    20% 96.2%,
+    16% 95.2%,
+    12% 96%,
+    8% 95%,
+    4% 95.8%,
+    1% 94.8%,
+    0% 96%
+  );
 }
 
-.letter h1 {
-  color: #d63447;
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
+/* Address Section */
+.address-section {
+  position: absolute;
+  top: 30px;
+  left: 40px;
 }
 
-.letter p {
-  color: #333;
-  margin-bottom: 1.5rem;
-  font-size: clamp(1rem, 2vw, 1.2rem);
+.to-line {
+  font-family: "Courier New", monospace;
+  font-size: 1.2rem;
+  color: #7b5ba1;
+  font-style: italic;
+  margin-bottom: 10px;
+  font-weight: 500;
 }
 
-.back-button {
-  background: #d63447;
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(214, 52, 71, 0.3);
+.address-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.back-button:hover {
-  background: #b82837;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(214, 52, 71, 0.4);
+.line {
+  width: 180px;
+  height: 1px;
+  background: #d0d0d0;
+}
+
+/* Polaroid Photos */
+.photos-section {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.polaroid {
+  background: white;
+  padding: 8px;
+  padding-bottom: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: rotate(-2deg);
+}
+
+.polaroid:nth-child(2) {
+  transform: rotate(3deg);
+  margin-top: 10px;
+}
+
+.photo-placeholder {
+  width: 70px;
+  height: 80px;
+  background: linear-gradient(135deg, #e6f2f8 0%, #d4e8f0 100%);
+  border: 1px solid #ddd;
+}
+
+.photo-image {
+  width: 70px;
+  height: 80px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Postmark Section */
+.postmark-section {
+  position: absolute;
+  top: 140px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.postmark-waves {
+  width: 80px;
+  height: 70px;
+}
+
+.stamp-circle {
+  width: 70px;
+  height: 70px;
+  border: 3px solid #9b5fa8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.stamp-inner {
+  width: 55px;
+  height: 55px;
+  border: 2px dashed #b47fb8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.stamp-heart {
+  width: 30px;
+  height: 27px;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
-/* Responsive adjustments */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(-5deg) translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(-5deg) translateY(0);
+  }
+}
+
 @media (max-width: 768px) {
-  .letter {
-    padding: 2rem;
+  .envelope {
+    padding: 2rem 1.5rem;
+    min-height: 380px;
+    max-width: 90%;
+  }
+
+  .address-section {
+    top: 20px;
+    left: 20px;
+  }
+
+  .photos-section {
+    right: 15px;
+    top: 15px;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .polaroid {
+    padding: 6px;
+    padding-bottom: 20px;
+  }
+
+  .photo-image {
+    width: 60px;
+    height: 70px;
+  }
+
+  .postmark-section {
+    right: 15px;
+    bottom: 15px;
+    top: auto;
+  }
+
+  .stamp-circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .stamp-inner {
+    width: 48px;
+    height: 48px;
+  }
+
+  .stamp-heart {
+    width: 26px;
+    height: 24px;
   }
 }
 
 @media (max-width: 480px) {
-  .letter {
-    padding: 1.5rem;
+  .envelope {
+    padding: 1.5rem 1.2rem;
+    min-height: 350px;
   }
 
-  .back-button {
-    padding: 0.8rem 1.5rem;
-    font-size: 0.9rem;
+  .to-line {
+    font-size: 1rem;
+  }
+
+  .address-section {
+    top: 15px;
+    left: 15px;
+  }
+
+  .line {
+    width: 140px;
+  }
+
+  .photos-section {
+    right: 12px;
+    top: 12px;
+  }
+
+  .polaroid {
+    padding: 5px;
+    padding-bottom: 18px;
+  }
+
+  .photo-image {
+    width: 50px;
+    height: 60px;
+  }
+
+  .postmark-section {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .stamp-circle {
+    width: 50px;
+    height: 50px;
+    border-width: 2px;
+  }
+
+  .stamp-inner {
+    width: 40px;
+    height: 40px;
+  }
+
+  .stamp-heart {
+    width: 22px;
+    height: 20px;
   }
 }

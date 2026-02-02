@@ -7,9 +7,12 @@
 body,
 html {
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
+  touch-action: pan-y;
+  -ms-touch-action: pan-y;
 }
 
 div {
@@ -21,27 +24,31 @@ div {
 }
 
 .envelop {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
   object-fit: cover;
   display: block;
   object-position: center;
   position: relative;
 }
 
-.wax-seal {
+.wax-seal-clickable {
   position: absolute;
-  top: 57%;
-  left: 50%;
+  top: 60%;
+  left: 49%;
   transform: translate(-50%, -50%);
-  width: 70px;
-  height: 60px;
+  width: 120px;
+  height: 85px;
   cursor: pointer;
-  transition: transform 0.2s;
   border-radius: 50%;
   background: transparent;
+  touch-action: none;
+  -ms-touch-action: none;
+  transition: opacity 0.2s;
 }
 
-.wax-seal:hover {
-  transform: translate(-50%, -50%) scale(1.1);
+.wax-seal-clickable:hover {
+  opacity: 0.8;
 }
