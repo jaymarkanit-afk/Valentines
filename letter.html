@@ -7,7 +7,30 @@
     <link rel="stylesheet" href="letter.css" />
   </head>
   <body>
-    <div class="envelope-container">
+    <!-- Bouquet Display (Initial View) -->
+    <div class="bouquet-container" id="bouquetView">
+      <div class="bouquet-wrapper">
+        <img
+          src="images/boquet_flower.png"
+          alt="Bouquet"
+          class="bouquet-image"
+        />
+        <!-- Visible paper letter in the flower -->
+        <div class="paper-letter" onclick="revealEnvelope()">
+          <div class="paper-content">
+            <div class="paper-line"></div>
+            <div class="paper-line short"></div>
+            <div class="paper-line"></div>
+            <div class="paper-line short"></div>
+            <div class="paper-line"></div>
+          </div>
+        </div>
+      </div>
+      <p class="bouquet-hint">Click the letter to open...</p>
+    </div>
+
+    <!-- Envelope Display (Hidden Initially) -->
+    <div class="envelope-container" id="envelopeView" style="display: none">
       <div class="envelope">
         <!-- Address Section -->
         <div class="address-section">
@@ -48,5 +71,19 @@
         </div>
       </div>
     </div>
+
+    <script>
+      function revealEnvelope() {
+        const bouquetView = document.getElementById("bouquetView");
+        const envelopeView = document.getElementById("envelopeView");
+
+        // Move bouquet to background with blur and fade
+        bouquetView.classList.add("background-mode");
+
+        // Show envelope in foreground
+        envelopeView.style.display = "flex";
+        envelopeView.style.animation = "fadeIn 0.8s ease-in";
+      }
+    </script>
   </body>
 </html>

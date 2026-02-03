@@ -66,6 +66,121 @@ body::before {
   opacity: 0.6;
 }
 
+/* Bouquet Container Styles */
+.bouquet-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  animation: fadeIn 1s ease-in;
+  transition: all 0.8s ease;
+  z-index: 1;
+}
+
+.bouquet-container.background-mode {
+  filter: blur(6px);
+  opacity: 0.5;
+  transform: scale(1.1) translateY(-10%);
+  z-index: 0;
+}
+
+.bouquet-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 900px;
+  width: 95%;
+  animation: floatBouquet 3s ease-in-out infinite;
+}
+
+.bouquet-image {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
+}
+
+/* Paper Letter in Flower */
+.paper-letter {
+  position: absolute;
+  top: 32%;
+  left: 50%;
+  transform: translateX(-50%) rotate(-8deg);
+  width: 100px;
+  height: 130px;
+  background: #ffffff;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.25),
+    0 1px 4px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  border: 1px solid #cccccc;
+}
+
+.paper-letter:hover {
+  transform: translateX(-50%) rotate(-8deg) scale(1.05);
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.3),
+    0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Paper content lines */
+.paper-content {
+  position: absolute;
+  top: 25px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.paper-line {
+  height: 2px;
+  background: linear-gradient(90deg, #d0d0d0 0%, #e0e0e0 100%);
+  border-radius: 1px;
+  opacity: 0.7;
+}
+
+.paper-line.short {
+  width: 70%;
+}
+
+.bouquet-hint {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: pulse 2s ease-in-out infinite;
+  font-style: italic;
+}
+
+@keyframes floatBouquet {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .envelope-container {
   display: flex;
   flex-direction: column;
@@ -73,10 +188,19 @@ body::before {
   justify-content: center;
   gap: 3rem;
   animation: fadeIn 0.8s ease-in;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   min-height: 100vh;
   padding: 2rem;
+  z-index: 2;
+  background: transparent;
+  pointer-events: none;
+}
+
+.envelope-container > * {
+  pointer-events: auto;
 }
 
 .envelope {
@@ -93,67 +217,6 @@ body::before {
     0 10px 25px rgba(0, 0, 0, 0.2);
   animation: slideDown 0.8s ease-out;
   transform: perspective(1000px) rotateX(-8deg);
-  clip-path: polygon(
-    0% 2%,
-    1% 0%,
-    3% 1%,
-    5% 0.5%,
-    7% 1.5%,
-    10% 0.8%,
-    13% 1.8%,
-    16% 1%,
-    20% 2%,
-    24% 1.2%,
-    28% 2.5%,
-    32% 1.5%,
-    36% 2.8%,
-    40% 2%,
-    44% 3%,
-    48% 2.2%,
-    52% 3.2%,
-    56% 2.5%,
-    60% 3.5%,
-    64% 2.8%,
-    68% 3.8%,
-    72% 3%,
-    76% 4%,
-    80% 3.2%,
-    84% 4.2%,
-    88% 3.5%,
-    92% 4.5%,
-    96% 4%,
-    99% 3%,
-    100% 2%,
-    100% 98%,
-    99% 97%,
-    97% 98.5%,
-    95% 97.5%,
-    92% 98.8%,
-    88% 97.8%,
-    84% 98.5%,
-    80% 97.2%,
-    76% 98.2%,
-    72% 97%,
-    68% 98%,
-    64% 96.8%,
-    60% 97.5%,
-    56% 96.5%,
-    52% 97.2%,
-    48% 96.2%,
-    44% 97%,
-    40% 96%,
-    36% 96.8%,
-    32% 95.8%,
-    28% 96.5%,
-    24% 95.5%,
-    20% 96.2%,
-    16% 95.2%,
-    12% 96%,
-    8% 95%,
-    4% 95.8%,
-    1% 94.8%,
-    0% 96%
-  );
 }
 
 /* Address Section */
