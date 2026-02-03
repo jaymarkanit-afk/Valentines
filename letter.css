@@ -81,10 +81,10 @@ body::before {
 
 .envelope {
   background: linear-gradient(135deg, #f5f9fb 0%, #ffffff 50%, #f5f9fb 100%);
-  padding: 2.5rem 3rem;
-  max-width: 450px;
-  width: 85%;
-  min-height: 280px;
+  padding: 4rem 3.5rem;
+  max-width: 550px;
+  width: 100%;
+  min-height: 500px;
   position: relative;
   margin: auto;
   box-shadow:
@@ -231,6 +231,43 @@ body::before {
   gap: 15px;
 }
 
+.stamp-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.stamp-link:hover {
+  transform: translateY(-3px);
+}
+
+.stamp-link:hover .stamp-circle {
+  box-shadow: 0 6px 12px rgba(155, 95, 168, 0.4);
+}
+
+.stamp-label {
+  font-size: 0.7rem;
+  color: #9b5fa8;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.3;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
 .postmark-waves {
   width: 80px;
   height: 70px;
@@ -318,6 +355,10 @@ body::before {
     top: auto;
   }
 
+  .stamp-label {
+    font-size: 0.65rem;
+  }
+
   .stamp-circle {
     width: 60px;
     height: 60px;
@@ -354,8 +395,11 @@ body::before {
   }
 
   .photos-section {
-    right: 12px;
-    top: 12px;
+    right: 15px;
+    top: 80px;
+    bottom: auto;
+    gap: 5px;
+    flex-direction: row;
   }
 
   .polaroid {
@@ -369,8 +413,17 @@ body::before {
   }
 
   .postmark-section {
-    right: 12px;
-    bottom: 12px;
+    right: 15px;
+    top: 165px;
+    bottom: auto;
+  }
+
+  .stamp-link {
+    gap: 5px;
+  }
+
+  .stamp-label {
+    font-size: 0.6rem;
   }
 
   .stamp-circle {
